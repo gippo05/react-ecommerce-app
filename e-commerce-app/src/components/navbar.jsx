@@ -1,7 +1,6 @@
 import { NavBarMenuItems } from "../mockdata/navbarmenu"
-import { FaSearch } from "react-icons/fa";
 import { RiShoppingCartLine } from "react-icons/ri";
-
+import { FaSearch } from "react-icons/fa";
 
 const NavBar = () => {
 
@@ -12,9 +11,15 @@ const NavBar = () => {
                 <div className="text-2xl font-bold px-6 text-white">TRENDORA</div>
 
                 {/* search bar */}
-                    <div>
-                        <input className="bg-white w-80 h-8 rounded" type="text" id="search-input" placeholder="Search items"/>
-                    </div>      
+                    <div className="relative flex items-center">
+                        <input
+                            className="bg-white w-150 h-10 rounded pr-8 pl-2 ml-5"
+                            type="text"
+                            id="search-input"
+                            placeholder="Search items"
+                        />
+                        <FaSearch className="absolute right-2 text-gray-400 pointer-events-none" />
+                    </div>  
 
 
                 {/* Menu items */}
