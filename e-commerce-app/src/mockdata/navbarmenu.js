@@ -1,17 +1,13 @@
 export const NavBarMenuItems = [
     {
-        id: 1,
-        title: "Home",
-        link: "#"
+        "id": 1,
+        "title": "Customer Service",
+        "link": "#"
     },
-    {
-        id: 2,
-        title: "Products",
-        link: "#"
-    },
-    {
-        id: 3,
-        title: "Login/Register",
-        link: "#"
+     {
+        "id": 2,
+        "title": "Login/Register",
+        "link": "#"
+        
     },
 ]

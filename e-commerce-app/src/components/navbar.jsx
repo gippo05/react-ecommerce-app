@@ -1,11 +1,15 @@
+
 import { NavBarMenuItems } from "../mockdata/navbarmenu"
-import { RiShoppingCartLine } from "react-icons/ri";
 import { FaSearch } from "react-icons/fa";
+import { FaCartShopping } from "react-icons/fa6";
+
 
 const NavBar = () => {
 
     return(
-        <nav className="bg-orange-600">
+        <>
+        
+        <nav className="bg-[#1E1E1E]">
             <div className="h-18 justify-between items-center flex px-10">
                 {/* logo */}
                 <div className="text-2xl font-bold px-6 text-white">TRENDORA</div>
@@ -25,18 +29,19 @@ const NavBar = () => {
                 {/* Menu items */}
                 <div className="hidden md:block">
                     <ul className="flex items-center gap-5 text-white font-bold px-6">
+                        <FaCartShopping className="cursor-pointer"/>
                         {NavBarMenuItems.map(item => (
-                            <li className="hover:bg-orange-300 px-3 py-2 rounded cursor-pointer transition-colors" key={item.id}>
+                            <li className="hover:bg-white hover:text-black px-3 py-2 rounded cursor-pointer transition-colors" key={item.id}>
                             <a href={item.link}>
-                                                {item.title}</a></li>))}
+                            {item.title}{item.icon}</a></li>))}
                     </ul> 
                 </div>
     
                 
-                    
-                {/* cart button */}
+                
             </div>
         </nav>
+        </>
     )
 }
 export default NavBar
