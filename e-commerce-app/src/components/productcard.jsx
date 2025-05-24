@@ -8,7 +8,7 @@ const ProductCard = ({product}) =>{
         <h2 className="text-lg font-semibold">{product.name}</h2>
         <p>₱{product.price}</p>
         <p>⭐ {product.rating} ({product.reviews})</p>
-        <button className="mt-2 bg-black text-white px-4 py-2 rounded">Add to Cart</button>
+        <button className="mt-2 bg-[#3B82F6] text-white px-4 py-2 rounded hover:bg-[#60A5FA] shadow-lg transition duration-300 cursor-pointer">Add to Cart</button>
         </div>
     )
 }
