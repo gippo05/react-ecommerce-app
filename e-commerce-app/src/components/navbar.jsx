@@ -21,7 +21,7 @@ const NavBar = () => {
         {/* Search Bar (hidden on small screens) */}
         <div className="hidden sm:flex relative items-center">
           <input
-            className="bg-white w-[400px] h-10 rounded pr-8 pl-2 text-black"
+            className="bg-white w-[600px] h-10 rounded pr-8 pl-2 text-black"
             type="text"
             id="search-input"
             placeholder="Search items"
@@ -58,7 +58,7 @@ const NavBar = () => {
 
       {/* Mobile Dropdown Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden flex flex-col gap-4 px-6 pb-4">
+        <div className="md:hidden flex flex-col gap-4 px-6 pb-4 transition-all duration-300 ease-in-out">
           {/* Search Bar (mobile view) */}
           <div className="relative flex items-center">
             <input
