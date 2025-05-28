@@ -1,14 +1,20 @@
 import NavBar from "./components/navbar"
 import Home from "./pages/home"
+import { useState } from "react"
 
 
 function App() {
  
+  const [cartItems, setCartItems] = useState([]);
+  
+  const addToCart = (product) => {
+    setCartItems(prev => [...prev, product]);
+  }
 
   return (
     <>
-    <NavBar />
-    <Home />
+    <NavBar cartCount ={cartItems.length}/>
+    <Home addToCart={addToCart}/>
     
     </>
   )
