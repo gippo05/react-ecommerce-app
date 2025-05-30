@@ -6,7 +6,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 
-const NavBar = ({cartCount}) => {
+const NavBar = ({cartCount, onCartClick}) => {
 
    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -32,7 +32,7 @@ const NavBar = ({cartCount}) => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6 font-bold">
-          <div className="relative">
+          <div className="relative" onClick={onCartClick}>
             <FaCartShopping className="cursor-pointer size-5" />
             {cartCount > 0 && (
               <span className="absolute -top-2 -right-3 text-xs w-5 h-5 flex items-center justify-center text-white rounded-full bg-red-700">{cartCount}</span>
@@ -77,7 +77,7 @@ const NavBar = ({cartCount}) => {
             <FaSearch className="absolute right-2 text-gray-400 pointer-events-none" />
           </div>
 
-          <div className="relative">
+          <div className="relative" onClick={onCartClick}>
             <FaCartShopping className="cursor-pointer size-5" />
             {cartCount > 0 && (
               <span className="absolute -top-2 left-3 text-xs w-5 h-5 flex items-center justify-center text-white rounded-full bg-red-700">{cartCount}</span>
