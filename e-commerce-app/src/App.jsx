@@ -15,13 +15,17 @@ function App() {
   const toggleCart = () =>{
     setShowCart(prev => !prev)
   }
+
+  const removeFromCart = (idToRemove) => {
+    setCartItems(prev => prev.filter(item => item.id !== idToRemove))
+  }
   
   return (
     <>
     <div className="relative">
       <NavBar cartCount ={cartItems.length} onCartClick={toggleCart}/>
       <Home addToCart={addToCart}/>
-      {showCart && <CartSideBar cartItems={cartItems}/>}
+      {showCart && <CartSideBar cartItems={cartItems} onRemoveItem={removeFromCart}/>}
       
     </div>
     
