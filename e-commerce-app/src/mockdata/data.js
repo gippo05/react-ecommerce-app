@@ -1,3 +1,16 @@
+import red_dress from '../assets/women_red_shirt.jpg'
+import blue_dress from '../assets/blue_dress_women.jpg'
+import green_dress from '../assets/green_dress_women.jpg'
+import women_combo from '../assets/women_combo.jpg'
+import men_combo1 from '../assets/men_combo1.jpg'
+import men_polo_blackshirt from '../assets/men_polo_blackshirt.jpg'
+import men_shirt_white2 from '../assets/men_shirt_white2.jpg'
+import men_shirt_white from '../assets/men_shirt_white.jpg'
+import children_combo1 from '../assets/children_combo1.jpg'
+import children_combo3 from '../assets/children_combo3.jpg'
+import children_shirt1 from '../assets/children_shirt1.jpg'
+import children_dress2 from '../assets/children_dress2.jpg'
+
 export const Products = [
 
     {
@@ -6,7 +19,7 @@ export const Products = [
     "price": 299,
     "rating": 4.5,
     "reviews": "1.2k",
-    "image": "./src/assets/women_red_shirt.jpg"
+    "image": red_dress,
     
     },
     {
@@ -15,7 +28,7 @@ export const Products = [
     "price": 599,
     "rating": 4.8,
     "reviews": "1.5k",
-    "image": "./src/assets/blue_dress_women.jpg"
+    "image": blue_dress,
     },
     {
     "id": 3,
@@ -23,7 +36,7 @@ export const Products = [
     "price": 399,
     "rating": 4.5,
     "reviews": "2.2k",
-    "image": "./src/assets/green_dress_women.jpg"
+    "image": green_dress,
     },
     {
     "id": 4,
@@ -31,7 +44,7 @@ export const Products = [
     "price": 799,
     "rating": 4.9,
     "reviews": "1.5k",
-    "image": "./src/assets/women_combo.jpg"
+    "image": women_combo,
     },
     {
     "id": 5,
@@ -39,7 +52,7 @@ export const Products = [
     "price": 899,
     "rating": 4.9,
     "reviews": "3.2k",
-    "image": "./src/assets/men_combo1.jpg"
+    "image": men_combo1,
     },
     {
     "id": 6,
@@ -47,7 +60,7 @@ export const Products = [
     "price": 299,
     "rating": 4.8,
     "reviews": "1.1k",
-    "image": "./src/assets/men_poloshirt_black.jpg"
+    "image": men_polo_blackshirt,
     },
     {
     "id": 7,
@@ -55,7 +68,7 @@ export const Products = [
     "price": 250,
     "rating": 4.9,
     "reviews": "5.6k",
-    "image": "./src/assets/men_shirt_white2.jpg"
+    "image": men_shirt_white2,
     },
     {
     "id": 8,
@@ -63,7 +76,7 @@ export const Products = [
     "price": 299,
     "rating": 4.5,
     "reviews": 120,
-    "image": "./src/assets/men_shirt_white.jpg"
+    "image": men_shirt_white,
     },
     {
     "id": 9,
@@ -71,7 +84,7 @@ export const Products = [
     "price": 699,
     "rating": 4.9,
     "reviews": "1.5k",
-    "image": "./src/assets/children_combo1.jpg"
+    "image": children_combo1,
     },
     {
     "id": 10,
@@ -79,7 +92,7 @@ export const Products = [
     "price": 299,
     "rating": 4.5,
     "reviews": "2.2k",
-    "image": "./src/assets/children_combo3.jpg"
+    "image": children_combo3,
     },
     {
     "id": 11,
@@ -87,7 +100,7 @@ export const Products = [
     "price": 299,
     "rating": 4.5,
     "reviews": "10.1k",
-    "image": "./src/assets/children_shirt1.jpg"
+    "image": children_shirt1,
     },
     {
     "id": 12,
@@ -95,6 +108,6 @@ export const Products = [
     "price": 299,
     "rating": 4.5,
     "reviews": "7.6k",
-    "image": "./src/assets/children_dress2.webp"
+    "image": children_dress2,
     },
 ]
