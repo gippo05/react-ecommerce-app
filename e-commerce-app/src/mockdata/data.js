@@ -3,13 +3,13 @@ import blue_dress from '../assets/blue_dress_women.jpg'
 import green_dress from '../assets/green_dress_women.jpg'
 import women_combo from '../assets/women_combo.jpg'
 import men_combo1 from '../assets/men_combo1.jpg'
-import men_polo_blackshirt from '../assets/men_polo_blackshirt.jpg'
+import men_polo_blackshirt from '../assets/men_poloshirt_black.jpg'
 import men_shirt_white2 from '../assets/men_shirt_white2.jpg'
 import men_shirt_white from '../assets/men_shirt_white.jpg'
 import children_combo1 from '../assets/children_combo1.jpg'
 import children_combo3 from '../assets/children_combo3.jpg'
 import children_shirt1 from '../assets/children_shirt1.jpg'
-import children_dress2 from '../assets/children_dress2.jpg'
+import children_dress2 from '../assets/children_dress2.webp'
 
 export const Products = [
 
