@@ -3,6 +3,7 @@ import Home from "./pages/home"
 import { useState } from "react"
 import CartSideBar from "./components/CartSideBar";
 
+
 function App() {
  
   const [cartItems, setCartItems] = useState([]);

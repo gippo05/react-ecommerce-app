@@ -1,6 +1,6 @@
 
 
-const ProductDetails = (product) => {
+const ProductDetails = ({product}) => {
 
     return(
         <div>
