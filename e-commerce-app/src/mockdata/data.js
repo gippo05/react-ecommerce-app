@@ -1,113 +1,114 @@
-import red_dress from '../assets/women_red_shirt.jpg'
-import blue_dress from '../assets/blue_dress_women.jpg'
-import green_dress from '../assets/green_dress_women.jpg'
-import women_combo from '../assets/women_combo.jpg'
-import men_combo1 from '../assets/men_combo1.jpg'
-import men_polo_blackshirt from '../assets/men_poloshirt_black.jpg'
-import men_shirt_white2 from '../assets/men_shirt_white2.jpg'
-import men_shirt_white from '../assets/men_shirt_white.jpg'
-import children_combo1 from '../assets/children_combo1.jpg'
-import children_combo3 from '../assets/children_combo3.jpg'
-import children_shirt1 from '../assets/children_shirt1.jpg'
-import children_dress2 from '../assets/children_dress2.webp'
+import dog_food1 from '../assets/dog_food1.webp'
+import dog_food2 from '../assets/dog_food2.webp'
+import dog_food3 from '../assets/dog_food3.jpg'
+import cat_food1 from '../assets/cat_food1.jpg'
+import cat_food2 from '../assets/cat_food2.webp'
+import cat_food3 from '../assets/cat_food3.webp'
+import pet_leash1 from '../assets/pet_leash1.webp'
+import pet_leash2 from '../assets/pet_leash2.webp'
+import pet_leash3 from '../assets/pet_leash3.webp'
+import pet_collar1 from '../assets/pet_collar1.webp'
+import pet_cage1 from '../assets/pet_cage1.jpg'
+import pet_collar3 from '../assets/pet_collar3.jpg'
+
 
 export const Products = [
 
     {
     "id": 1,
-    "name": "Sexy Women's Contrast Color Numbers Print  (Black B, S)",
+    "name": "Dog Treats for 12 months+",
     "price": 299,
-    "rating": 4.5,
+    "rating": 4.9,
     "reviews": "1.2k",
-    "image": red_dress,
+    "image": dog_food1,
     
     },
     {
     "id": 2,
-    "name": "Blue Night Dress for Women All Occasions (S, M, L)",
+    "name": "Pedigree Meat Jerky",
     "price": 599,
     "rating": 4.8,
     "reviews": "1.5k",
-    "image": blue_dress,
+    "image": dog_food2,
     },
     {
     "id": 3,
-    "name": "Green Dress for Women Classic (S, M, L, XL)",
+    "name": "Pet Sausage (Chicken, Duck, Beef)",
     "price": 399,
     "rating": 4.5,
     "reviews": "2.2k",
-    "image": green_dress,
+    "image": dog_food3,
     },
     {
     "id": 4,
-    "name": "Creamy Beige Combo Top and Short for Women (S,M,L)",
+    "name": "Blackhawk Chicken Cat Food",
     "price": 799,
     "rating": 4.9,
     "reviews": "1.5k",
-    "image": women_combo,
+    "image": cat_food1,
     },
     {
     "id": 5,
-    "name": "White Shirt and Khaki Pants combo for Men (S-XL)",
+    "name": "Freeze-Dried Cat Food",
     "price": 899,
     "rating": 4.9,
     "reviews": "3.2k",
-    "image": men_combo1,
+    "image": cat_food2,
     },
     {
     "id": 6,
-    "name": "Men Black Polo Shirt for All Occasions, Cotton (Black S-L)",
+    "name": "9Lives Cat Food",
     "price": 299,
     "rating": 4.8,
     "reviews": "1.1k",
-    "image": men_polo_blackshirt,
+    "image": cat_food3,
     },
     {
     "id": 7,
-    "name": "White shirt for Men, cotton 100%  (S-XL)",
+    "name": "Red pet collar",
     "price": 250,
     "rating": 4.9,
     "reviews": "5.6k",
-    "image": men_shirt_white2,
+    "image": pet_collar1,
     },
     {
     "id": 8,
-    "name": "White Shirt with Print for Men, 100% Cotton (S-XXL)",
+    "name": "Reinforced assorted pet collar",
     "price": 299,
     "rating": 4.5,
     "reviews": 120,
-    "image": men_shirt_white,
+    "image": pet_collar3,
     },
     {
     "id": 9,
-    "name": "White dress for kids ages 12+, 100% Cotton",
+    "name": "Dog Kennel",
     "price": 699,
     "rating": 4.9,
     "reviews": "1.5k",
-    "image": children_combo1,
+    "image": pet_cage1,
     },
     {
     "id": 10,
-    "name": "Floral Dress for Kids ages 5+, 100% Cotton",
+    "name": "Rope Leash",
     "price": 299,
     "rating": 4.5,
     "reviews": "2.2k",
-    "image": children_combo3,
+    "image": pet_leash1,
     },
     {
     "id": 11,
-    "name": "Children halloween costume for kids ages 5+, 100% Cotton",
+    "name": "Red thin leash",
     "price": 299,
     "rating": 4.5,
     "reviews": "10.1k",
-    "image": children_shirt1,
+    "image": pet_leash2,
     },
     {
     "id": 12,
-    "name": "Children Dress watermelon 100% cotton",
+    "name": "Body leash for Dogs and Cats",
     "price": 299,
     "rating": 4.5,
     "reviews": "7.6k",
-    "image": children_dress2,
+    "image": pet_leash3,
     },
 ]

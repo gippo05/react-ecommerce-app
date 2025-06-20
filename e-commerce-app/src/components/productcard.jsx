@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 const ProductCard = ({product, addToCart}) =>{
 
     return(
-    <div className="rounded p-4 w-auto">
+    <div className="rounded p-4 w-auto border border-gray-200">
         <Link to={`/product/${product.id}`}>
             <img src={product.image} alt={product.name} className="lg:h-80 w-full h-100 object-cover rounded" />
             <h2 className="text-lg font-semibold">{product.name}</h2>

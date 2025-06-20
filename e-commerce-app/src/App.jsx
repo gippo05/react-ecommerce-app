@@ -4,6 +4,7 @@ import { useState } from "react"
 import CartSideBar from "./components/CartSideBar";
 import ProductDetails from "./pages/productdetails";
 import { Routes, Route } from "react-router-dom";
+import Footer from "./components/footer";
 
 
 function App() {
@@ -76,6 +77,7 @@ function App() {
         <Route path="/" element={<Home addToCart={addToCart} />} />
         <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
+      <Footer />
       {showCart && <CartSideBar cartItems={cartItems} 
                                 onRemoveItem={removeFromCart} 
                                 increaseQuantity={increaseQuantity} 
