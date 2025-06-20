@@ -2,6 +2,8 @@ import NavBar from "./components/navbar"
 import Home from "./pages/home"
 import { useState } from "react"
 import CartSideBar from "./components/CartSideBar";
+import ProductDetails from "./pages/productdetails";
+import { Routes, Route } from "react-router-dom";
 
 
 function App() {
@@ -68,9 +70,12 @@ function App() {
   
   return (
     <>
-    <div className="relative">
+    <div className="relative bg-[#FFFDE7]">
       <NavBar cartCount ={cartItems.length} onCartClick={toggleCart}/>
-      <Home addToCart={addToCart}/>
+      <Routes>
+        <Route path="/" element={<Home addToCart={addToCart} />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+      </Routes>
       {showCart && <CartSideBar cartItems={cartItems} 
                                 onRemoveItem={removeFromCart} 
                                 increaseQuantity={increaseQuantity} 

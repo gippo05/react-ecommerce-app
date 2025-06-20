@@ -13,10 +13,10 @@ const NavBar = ({cartCount, onCartClick}) => {
   const toggleMobileMenu = () => setIsMobileMenuOpen(prev => !prev);
 
   return (
-    <nav className="bg-[#1E1E1E] text-white">
+    <nav className="bg-[#FF8A65] text-white">
       <div className="flex items-center justify-between px-6 py-4">
         {/* Logo */}
-        <div className="text-2xl font-bold ml-5">TRENDORA</div>
+        <div className="text-2xl font-bold ml-5">Pawfect Finds</div>
 
         {/* Search Bar (hidden on small screens) */}
         <div className="hidden sm:flex relative items-center">
