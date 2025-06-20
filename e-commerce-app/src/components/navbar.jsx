@@ -5,6 +5,7 @@ import { FaSearch } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
+import logo from '../assets/LOGO/main_logo.png'
 
 const NavBar = ({cartCount, onCartClick}) => {
 
@@ -13,10 +14,10 @@ const NavBar = ({cartCount, onCartClick}) => {
   const toggleMobileMenu = () => setIsMobileMenuOpen(prev => !prev);
 
   return (
-    <nav className="bg-[#FF8A65] text-white">
+    <nav className="bg-[#F97316] text-[#FFF8E1]">
       <div className="flex items-center justify-between px-6 py-4">
         {/* Logo */}
-        <div className="text-2xl font-bold ml-5">G&N Pawsentials</div>
+        <div className="ml-5"><img src={logo} alt="G&NLogo" className="h-20 w-full" /></div>
 
         {/* Search Bar (hidden on small screens) */}
         <div className="hidden sm:flex relative items-center">
