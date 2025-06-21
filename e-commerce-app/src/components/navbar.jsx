@@ -30,7 +30,7 @@ const NavBar = ({cartCount, onCartClick}) => {
           />
           <FaSearch className="absolute right-2 text-gray-400 pointer-events-none" />
         </div>
-
+    {/* will add */}
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6 font-bold">
           <div className="relative" onClick={onCartClick}>
