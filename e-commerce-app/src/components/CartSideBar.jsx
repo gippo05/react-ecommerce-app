@@ -2,7 +2,7 @@
 const CartSideBar = ({cartItems, onRemoveItem, increaseQuantity, decreaseQuantity}) =>{
 
     return(
-        <div className="fixed top-0 right-0 w-80 h-full bg-gray-100 shadow-lg p-4 overflow-y-auto">
+        <div className="fixed top-0 right-0 w-80 h-full bg-gray-100 shadow-lg p-4 overflow-y-auto z-99">
             <h2 className="text-lg font-bold mb-4">Your Cart</h2>
 
             {cartItems.length === 0 ? (
