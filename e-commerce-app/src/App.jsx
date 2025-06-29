@@ -1,6 +1,6 @@
 import NavBar from "./components/navbar"
 import Home from "./pages/home"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import CartSideBar from "./components/CartSideBar";
 import ProductDetails from "./pages/productdetails";
 import { Routes, Route } from "react-router-dom";
@@ -9,9 +9,32 @@ import Footer from "./components/footer";
 
 function App() {
  
-  const [cartItems, setCartItems] = useState([]);
-  const [showCart, setShowCart] = useState(false);
+  const [cartItems, setCartItems] = useState(() => {
+  try {
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  } catch (error) {
+    console.error("Error loading cart:", error);
+    return [];
+  }
+});
 
+const [showCart, setShowCart] = useState(false);
+
+// ✅ Save cart to localStorage when cartItems change
+useEffect(() => {
+  try {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  } catch (error) {
+    console.error("Error saving cart:", error);
+  }
+}, [cartItems]);
+
+
+  
+ 
+
+  // Add to cart functionality
   const addToCart = (product) => {
     const existingItem = cartItems.find(item => item.id === product.id)
 
@@ -28,14 +51,17 @@ function App() {
     }
   }
 
+  // Toggle cart
   const toggleCart = () =>{
     setShowCart(prev => !prev)
   }
 
+  //remove from cart function
   const removeFromCart = (idToRemove) => {
     setCartItems(prev => prev.filter(item => item.id !== idToRemove))
   }
 
+  //increase function
   const increaseQuantity = (productId) => {
     const itemToIncrease = cartItems.find(item => item.id === productId)
 
@@ -49,6 +75,7 @@ function App() {
     }
   }
 
+  //decrease quantity
  const decreaseQuantity = (productId) => {
   const itemToDecrease = cartItems.find(item => item.id === productId);
 
@@ -81,7 +108,8 @@ function App() {
       {showCart && <CartSideBar cartItems={cartItems} 
                                 onRemoveItem={removeFromCart} 
                                 increaseQuantity={increaseQuantity} 
-                                decreaseQuantity={decreaseQuantity}/>}
+                                decreaseQuantity={decreaseQuantity}
+                                onCloseClick={toggleCart}/>}
       
     </div>
     
