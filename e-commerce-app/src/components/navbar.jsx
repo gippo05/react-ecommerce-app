@@ -7,7 +7,7 @@ import { FaTimes } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import logo from '../assets/LOGO/main_logo.png'
 
-const NavBar = ({cartCount, onCartClick}) => {
+const NavBar = ({cartCount, onCartClick, onSearchChange, searchValue}) => {
 
    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -27,6 +27,8 @@ const NavBar = ({cartCount, onCartClick}) => {
             id="search-input"
             placeholder="Search items"
             aria-label="Search items"
+            value = {searchValue}
+            onChange = {onSearchChange}
           />
           <FaSearch className="absolute right-2 text-gray-400 pointer-events-none" />
         </div>

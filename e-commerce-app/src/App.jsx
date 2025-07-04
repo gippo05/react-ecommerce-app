@@ -5,9 +5,23 @@ import CartSideBar from "./components/CartSideBar";
 import ProductDetails from "./pages/productdetails";
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/footer";
+import { Products } from "./mockdata/data";
 
 
 function App() {
+
+// Search filtering functionality
+
+const [searchedItems, setsearchedItems] = useState('');
+
+
+
+const onSearchChange = (e) => {
+  setsearchedItems(e.target.value.toLowerCase());
+};
+
+
+//save to local storage function
  
   const [cartItems, setCartItems] = useState(() => {
   try {
@@ -31,7 +45,7 @@ useEffect(() => {
 }, [cartItems]);
 
 
-  
+
  
 
   // Add to cart functionality
@@ -99,9 +113,9 @@ useEffect(() => {
   return (
     <>
     <div className="relative bg-[#FFFDE7]">
-      <NavBar cartCount ={cartItems.length} onCartClick={toggleCart}/>
+      <NavBar cartCount ={cartItems.length} onCartClick={toggleCart} onSearchChange={onSearchChange} searchValue={searchedItems}/>
       <Routes>
-        <Route path="/" element={<Home addToCart={addToCart} />} />
+        <Route path="/" element={<Home addToCart={addToCart} searchedItems={searchedItems} />} />
         <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
       <Footer />
