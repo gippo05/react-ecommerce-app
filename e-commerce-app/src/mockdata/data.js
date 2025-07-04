@@ -21,6 +21,7 @@ export const Products = [
     "rating": 4.9,
     "reviews": "1.2k",
     "image": dog_food1,
+    "originalPrice": 499,
     
     },
     {
@@ -30,6 +31,7 @@ export const Products = [
     "rating": 4.8,
     "reviews": "1.5k",
     "image": dog_food2,
+    "originalPrice": 799,
     },
     {
     "id": 3,
@@ -38,6 +40,7 @@ export const Products = [
     "rating": 4.5,
     "reviews": "2.2k",
     "image": dog_food3,
+    "originalPrice": 699,
     },
     {
     "id": 4,
@@ -46,14 +49,16 @@ export const Products = [
     "rating": 4.9,
     "reviews": "1.5k",
     "image": cat_food1,
+    "originalPrice": 999,
     },
     {
     "id": 5,
     "name": "Freeze-Dried Cat Food",
-    "price": 899,
+    "price": 499,
     "rating": 4.9,
     "reviews": "3.2k",
     "image": cat_food2,
+    "originalPrice": 899,
     },
     {
     "id": 6,
@@ -62,6 +67,7 @@ export const Products = [
     "rating": 4.8,
     "reviews": "1.1k",
     "image": cat_food3,
+    "originalPrice": 499,
     },
     {
     "id": 7,
@@ -70,6 +76,7 @@ export const Products = [
     "rating": 4.9,
     "reviews": "5.6k",
     "image": pet_collar1,
+    "originalPrice": 500,
     },
     {
     "id": 8,
@@ -78,6 +85,7 @@ export const Products = [
     "rating": 4.5,
     "reviews": 120,
     "image": pet_collar3,
+    "originalPrice": 499,
     },
     {
     "id": 9,
@@ -86,6 +94,7 @@ export const Products = [
     "rating": 4.9,
     "reviews": "1.5k",
     "image": pet_cage1,
+    "originalPrice": 1099,
     },
     {
     "id": 10,
@@ -94,6 +103,7 @@ export const Products = [
     "rating": 4.5,
     "reviews": "2.2k",
     "image": pet_leash1,
+
     },
     {
     "id": 11,
@@ -102,6 +112,7 @@ export const Products = [
     "rating": 4.5,
     "reviews": "10.1k",
     "image": pet_leash2,
+    "originalPrice": 499,
     },
     {
     "id": 12,
@@ -110,5 +121,6 @@ export const Products = [
     "rating": 4.5,
     "reviews": "7.6k",
     "image": pet_leash3,
+    "originalPrice": 499,
     },
 ]
