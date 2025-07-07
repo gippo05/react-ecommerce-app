@@ -5,7 +5,7 @@ import CartSideBar from "./components/CartSideBar";
 import ProductDetails from "./pages/productdetails";
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/footer";
-import { Products } from "./mockdata/data";
+
 
 
 function App() {
@@ -49,7 +49,7 @@ useEffect(() => {
  
 
   // Add to cart functionality
-  const addToCart = (product) => {
+  const addToCart = (product, quantity) => {
     const existingItem = cartItems.find(item => item.id === product.id)
 
     if(existingItem){
@@ -61,7 +61,7 @@ useEffect(() => {
       setCartItems(updatedCart);
     }
     else{
-      setCartItems(prev => [...prev, { ...product, quantity: 1 }]);
+      setCartItems(prev => [...prev, { ...product, quantity}]);
     }
   }
 
@@ -113,10 +113,17 @@ useEffect(() => {
   return (
     <>
     <div className="relative bg-[#FFFDE7]">
-      <NavBar cartCount ={cartItems.length} onCartClick={toggleCart} onSearchChange={onSearchChange} searchValue={searchedItems}/>
+      <NavBar cartCount ={cartItems.length} 
+              onCartClick={toggleCart} 
+              onSearchChange={onSearchChange} 
+              searchValue={searchedItems}/>
+
       <Routes>
         <Route path="/" element={<Home addToCart={addToCart} searchedItems={searchedItems} />} />
-        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/product/:id" element={<ProductDetails increaseQuantity={increaseQuantity}
+                                                            decreaseQuantity={decreaseQuantity}
+                                                            addToCart={addToCart}
+                                                            cartItems = {cartItems}/>} />
       </Routes>
       <Footer />
       {showCart && <CartSideBar cartItems={cartItems} 
