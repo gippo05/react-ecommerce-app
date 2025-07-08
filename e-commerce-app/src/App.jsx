@@ -49,7 +49,7 @@ useEffect(() => {
  
 
   // Add to cart functionality
-  const addToCart = (product, quantity) => {
+  const addToCart = (product, quantity = 1) => {
     const existingItem = cartItems.find(item => item.id === product.id)
 
     if(existingItem){
