@@ -124,6 +124,7 @@ useEffect(() => {
                                                             decreaseQuantity={decreaseQuantity}
                                                             addToCart={addToCart}
                                                             cartItems = {cartItems}/>} />
+        <Route path="/checkout" element={}/>
       </Routes>
       <Footer />
       {showCart && <CartSideBar cartItems={cartItems} 
