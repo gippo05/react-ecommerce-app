@@ -5,6 +5,7 @@ import CartSideBar from "./components/CartSideBar";
 import ProductDetails from "./pages/productdetails";
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/footer";
+import CheckOutPage from "./pages/checkoutPage"
 
 
 
@@ -124,7 +125,7 @@ useEffect(() => {
                                                             decreaseQuantity={decreaseQuantity}
                                                             addToCart={addToCart}
                                                             cartItems = {cartItems}/>} />
-        <Route path="/checkout" element={}/>
+        <Route path="/checkout" element={<CheckOutPage cartItems = {cartItems} />}/>
       </Routes>
       <Footer />
       {showCart && <CartSideBar cartItems={cartItems} 
