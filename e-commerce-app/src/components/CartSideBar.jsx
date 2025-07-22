@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
-
-
-
-const CartSideBar = ({ cartItems, onRemoveItem, increaseQuantity, decreaseQuantity, onCloseClick }) => {
-
-    // console.log("🧪 CartItems in CartSideBar:", cartItems);
-
-    const navigate = useNavigate();
+const CartSideBar = ({
+  cartItems,
+  onRemoveItem,
+  increaseQuantity,
+  decreaseQuantity,
+  onCloseClick
+}) => {
+  const navigate = useNavigate();
 
   return (
     <div className="fixed top-0 right-0 w-80 h-full bg-gray-100 shadow-lg z-50 overflow-y-auto">
@@ -28,43 +28,48 @@ const CartSideBar = ({ cartItems, onRemoveItem, increaseQuantity, decreaseQuanti
         {cartItems.length === 0 ? (
           <p className="text-gray-500">Your cart is empty.</p>
         ) : (
-          cartItems.map((item, index) => (
-            <div key={index} className="mb-4 border-b pb-2">
-              <img src={item.image} alt={item.name} className="h-36" />
-              <h3 className="font-semibold">{item.name}</h3>
-              <p>₱{item.price}</p>
-              <p>Quantity: {item.quantity}</p>
-              <div className="flex gap-2 mt-2">
-                <button
-                  onClick={() => onRemoveItem(item.id)}
-                  className="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 transition"
-                >
-                  🗑️ Remove
-                </button>
-                <button
-                  onClick={() => decreaseQuantity(item.id)}
-                  className="bg-orange-400 text-white px-2 py-1 rounded hover:bg-orange-300 transition"
-                >
-                  -
-                </button>
-                <button
-                  onClick={() => increaseQuantity(item.id)}
-                  className="bg-orange-400 text-white px-2 py-1 rounded hover:bg-orange-300 transition"
-                >
-                  +
-                </button>
+          <>
+            {cartItems.map((item, index) => (
+              <div key={index} className="mb-4 border-b pb-2">
+                <img src={item.image} alt={item.name} className="h-36" />
+                <h3 className="font-semibold">{item.name}</h3>
+                <p>₱{item.price}</p>
+                <p>Quantity: {item.quantity}</p>
+                <div className="flex gap-2 mt-2">
+                  <button
+                    onClick={() => onRemoveItem(item.id)}
+                    className="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 transition"
+                  >
+                    🗑️ Remove
+                  </button>
+                  <button
+                    onClick={() => decreaseQuantity(item.id)}
+                    className="bg-orange-400 text-white px-2 py-1 rounded hover:bg-orange-300 transition"
+                  >
+                    -
+                  </button>
+                  <button
+                    onClick={() => increaseQuantity(item.id)}
+                    className="bg-orange-400 text-white px-2 py-1 rounded hover:bg-orange-300 transition"
+                  >
+                    +
+                  </button>
+                </div>
               </div>
+            ))}
 
-              <div>
-                <button className="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-200 transition"
-                        onClick={navigate("/checkout")}>Checkout</button>
-              </div>
-            </div>
-          ))
+            
+            <button
+              className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition w-full"
+              onClick={() => navigate("/checkout")}
+            >
+              Checkout
+            </button>
+          </>
         )}
       </div>
     </div>
   );
 };
 
-export default CartSideBar
+export default CartSideBar;

@@ -23,7 +23,7 @@ const CheckOutPage = ({ cartItems }) => {
                                 <img src={item.image} alt={item.image} />
                                 <h3>{item.name}</h3>
                                 <p>{item.price}</p>
-                                <p className="font-semibold mb-1">Quantity:</p>
+                                <p className="font-semibold mb-1">Quantity: {item.quantity}</p>
                             </div>
                             ))}
             </div>
