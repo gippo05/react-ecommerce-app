@@ -1,6 +1,14 @@
+import { useNavigate } from "react-router-dom";
+
+
+
+
 const CartSideBar = ({ cartItems, onRemoveItem, increaseQuantity, decreaseQuantity, onCloseClick }) => {
 
-    console.log("🧪 CartItems in CartSideBar:", cartItems);
+    // console.log("🧪 CartItems in CartSideBar:", cartItems);
+
+    const navigate = useNavigate();
+
   return (
     <div className="fixed top-0 right-0 w-80 h-full bg-gray-100 shadow-lg z-50 overflow-y-auto">
       {/* Close button */}
@@ -35,16 +43,21 @@ const CartSideBar = ({ cartItems, onRemoveItem, increaseQuantity, decreaseQuanti
                 </button>
                 <button
                   onClick={() => decreaseQuantity(item.id)}
-                  className="bg-rose-600 text-white px-2 py-1 rounded hover:bg-rose-700 transition"
+                  className="bg-orange-400 text-white px-2 py-1 rounded hover:bg-orange-300 transition"
                 >
                   -
                 </button>
                 <button
                   onClick={() => increaseQuantity(item.id)}
-                  className="bg-emerald-600 text-white px-2 py-1 rounded hover:bg-emerald-700 transition"
+                  className="bg-orange-400 text-white px-2 py-1 rounded hover:bg-orange-300 transition"
                 >
                   +
                 </button>
+              </div>
+
+              <div>
+                <button className="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-200 transition"
+                        onClick={navigate("/checkout")}>Checkout</button>
               </div>
             </div>
           ))

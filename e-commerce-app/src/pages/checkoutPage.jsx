@@ -1,4 +1,4 @@
-import { Products } from "../mockdata/data";
+
 
 
 
@@ -20,9 +20,10 @@ const CheckOutPage = ({ cartItems }) => {
               <h3>Items to Checkout</h3>  
                     {cartItems.map(item => (
                             <div key={item.id}>
+                                <img src={item.image} alt={item.image} />
                                 <h3>{item.name}</h3>
                                 <p>{item.price}</p>
-                                
+                                <p className="font-semibold mb-1">Quantity:</p>
                             </div>
                             ))}
             </div>
