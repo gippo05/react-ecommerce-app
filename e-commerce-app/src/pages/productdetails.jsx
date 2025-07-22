@@ -1,22 +1,55 @@
 import { useParams } from "react-router-dom";
 import { Products } from "../mockdata/data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const ProductDetails = ({addToCart, cartItems}) => {
+const ProductDetails = ({ addToCart, cartItems }) => {
   const { id } = useParams();
-  const product = Products.find(p => p.id === Number(id));
+  const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  const [loading, setLoading] = useState(true);
 
- const isInCart = () => cartItems.some(item => item.id === product.id);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    setLoading(true);
+    // Simulate fetching from API:
+    const timer = setTimeout(() => {
+      const foundProduct = Products.find((p) => p.id === Number(id));
+      setProduct(foundProduct);
+      setLoading(false);
+    }, 1000); // 1 second fake delay
+
+    return () => clearTimeout(timer);
+  }, [id]);
+
+  if (loading || !product) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#FFFDE7]">
+        <div className="w-16 h-16 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
+  const isInCart = () => cartItems.some((item) => item.id === product.id);
 
   const handleDecrease = () => {
-    if (quantity > 1) setQuantity(prev => prev - 1);
-  }
+    if (quantity > 1) setQuantity((prev) => prev - 1);
+  };
 
   const handleIncrease = () => {
-    setQuantity(prev => prev + 1);
+    setQuantity((prev) => prev + 1);
+  };
+
+  const handleBuyNow = () => {
+
+    if(!isInCart()){
+      addToCart(product, quantity);
+    }
+    navigate("/checkout");
+    
   }
+
   return (
     <div className="min-h-screen flex items-start justify-center px-4 py-10 bg-[#FFFDE7]">
       <div className="flex flex-col md:flex-row gap-10 max-w-5xl w-full">
@@ -45,8 +78,12 @@ const ProductDetails = ({addToCart, cartItems}) => {
         <div className="md:w-1/2">
           <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
           <p className="text-red-600 text-2xl font-bold mb-1">₱{product.price}</p>
-          <p className="line-through text-gray-400 text-sm mb-2">₱{product.originalPrice}</p>
-          <p className="text-yellow-600 mb-4">⭐ {product.rating} ({product.reviews})</p>
+          <p className="line-through text-gray-400 text-sm mb-2">
+            ₱{product.originalPrice}
+          </p>
+          <p className="text-yellow-600 mb-4">
+            ⭐ {product.rating} ({product.reviews})
+          </p>
 
           {/* Variants */}
           <div className="mb-4">
@@ -65,25 +102,33 @@ const ProductDetails = ({addToCart, cartItems}) => {
           <div className="mb-4">
             <p className="font-semibold mb-1">Quantity:</p>
             <div className="flex items-center space-x-2">
-              <button className="px-3 py-1 bg-gray-300 rounded hover:bg-gray-200 cursor-pointer" 
-              onClick={handleDecrease}>-</button>
+              <button
+                className="px-3 py-1 bg-gray-300 rounded hover:bg-gray-200 cursor-pointer"
+                onClick={handleDecrease}
+              >
+                -
+              </button>
               <span className="px-2">{quantity}</span>
-              <button className="px-3 py-1 bg-gray-300 rounded  hover:bg-gray-200 cursor-pointer" 
-              onClick={handleIncrease}>+</button>
+              <button
+                className="px-3 py-1 bg-gray-300 rounded hover:bg-gray-200 cursor-pointer"
+                onClick={handleIncrease}
+              >
+                +
+              </button>
             </div>
           </div>
 
           {/* Buttons */}
           <div className="flex gap-4 mt-6">
-              <button
-                className="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600 cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed" 
-                onClick={() => addToCart(product, quantity)}
-                disabled={isInCart()}
-              >
-                {isInCart() ? "Already in Cart" : "Add to Cart"}
-              </button>
-            
-            <button className="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 cursor-pointer">
+            <button
+              className="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600 cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed"
+              onClick={() => addToCart(product, quantity)}
+              disabled={isInCart()}
+            >
+              {isInCart() ? "Already in Cart" : "Add to Cart"}
+            </button>
+
+            <button className="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 cursor-pointer" onClick={handleBuyNow}>
               Buy Now
             </button>
           </div>
