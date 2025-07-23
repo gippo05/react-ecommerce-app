@@ -126,6 +126,7 @@ useEffect(() => {
                                                             addToCart={addToCart}
                                                             cartItems = {cartItems}/>} />
         <Route path="/checkout" element={<CheckOutPage cartItems = {cartItems} />}/>
+        {/* <Route path="/CustomerService" element={<CustomerService />} /> */}
       </Routes>
       <Footer />
       {showCart && <CartSideBar cartItems={cartItems} 
