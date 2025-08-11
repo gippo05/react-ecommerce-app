@@ -35,7 +35,7 @@ const Home = ({ addToCart, searchedItems }) => {
           <p className="col-span-full text-center text-gray-500">Loading products...</p>
         ) : filteredItems.length > 0 ? (
           filteredItems.map(product => (
-            <ProductCard key={product.id} product={product} addToCart={addToCart} />
+            <ProductCard key={product._id} product={product} addToCart={addToCart} />
           ))
         ) : (
           <p className="col-span-full text-center text-gray-500">No products found.</p>

@@ -4,7 +4,7 @@ const ProductCard = ({product, addToCart}) =>{
 
     return(
     <div className="rounded p-4 w-auto border border-gray-200">
-        <Link to={`/product/${product.id}`}>
+        <Link to={`/product/${product._id}`}>
             <img src={`http://localhost:3000${product.image}`} alt={product.name} className="lg:h-80 w-full h-40 object-cover rounded" />
             <h2 className="text-lg font-semibold">{product.name}</h2>
             <p>₱{product.price}</p>

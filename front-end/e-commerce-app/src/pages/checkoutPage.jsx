@@ -1,5 +1,8 @@
-const CheckOutPage = ({ cartItems }) => {
+import { Link } from "react-router-dom";
+
+const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
   return (
+    <>
     <div className="min-h-screen bg-gray-100 p-8">
       <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
         <h2 className="text-3xl font-bold mb-6 text-gray-800">Checkout</h2>
@@ -34,7 +37,7 @@ const CheckOutPage = ({ cartItems }) => {
             >
               <div className="flex items-center gap-4">
                 <img
-                  src={item.image}
+                  src={`http://localhost:3000${item.image}`}
                   alt={item.name}
                   className="w-20 h-20 object-cover rounded"
                 />
@@ -44,17 +47,49 @@ const CheckOutPage = ({ cartItems }) => {
                   <p className="text-gray-600">Quantity: {item.quantity}</p>
                 </div>
               </div>
+              <button
+                  onClick={() => removeFromCart(item.id)}
+                  className="w-8 h-8 flex items-center justify-center rounded-full bg-red-500 text-white font-bold hover:bg-red-600 transition"
+                >
+                  ×
+                </button>
             </div>
           ))}
         </div>
 
-        <div className="mt-8">
-          <button className="w-full md:w-auto px-6 py-3 bg-orange-300 hover:bg-orange-200 text-white font-semibold rounded-md transition">
-            Confirm Order
-          </button>
-        </div>
+        <div className="mt-8 flex flex-col md:flex-row gap-4">
+              <button className="px-6 py-3 bg-orange-300 hover:bg-orange-200 text-white font-semibold rounded-md transition cursor-pointer">
+                Confirm Order
+              </button>
+
+              <button
+                onClick={clearCart}
+                className="px-6 py-3 bg-red-400 hover:bg-red-300 text-white font-semibold rounded-md transition cursor-pointer"
+              >
+                Clear Cart
+              </button>
+          </div>
+
+        
+         
+          
+        
       </div>
+
+      <div className="mt-4 text-center">
+  <Link
+    to="/"
+    className="inline-block px-6 py-3 bg-yellow-400 hover:bg-yellow-300 text-gray-800 font-semibold rounded-md shadow transition cursor-pointer"
+  >
+    ← Back to Home
+  </Link>
+</div>
     </div>
+
+
+
+</>
+          
   );
 };
 

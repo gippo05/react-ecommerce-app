@@ -51,18 +51,18 @@ useEffect(() => {
 
   // Add to cart functionality
   const addToCart = (product, quantity = 1) => {
-    const existingItem = cartItems.find(item => item.id === product.id)
+    const existingItem = cartItems.find(item => item.id === product._id)
 
     if(existingItem){
       const updatedCart =  cartItems.map(item =>
-      item.id === product.id
+      item.id === product._id
         ? { ...item, quantity: item.quantity + 1 }
         : item
       );
       setCartItems(updatedCart);
     }
     else{
-      setCartItems(prev => [...prev, { ...product, quantity}]);
+      setCartItems(prev => [...prev, { ...product, id: product._id, quantity}]);
     }
   }
 
@@ -74,6 +74,11 @@ useEffect(() => {
   //remove from cart function
   const removeFromCart = (idToRemove) => {
     setCartItems(prev => prev.filter(item => item.id !== idToRemove))
+  }
+
+  //Clear whole cart function
+  const clearCart = () =>{
+    setCartItems([]);
   }
 
   //increase function
@@ -125,7 +130,10 @@ useEffect(() => {
                                                             decreaseQuantity={decreaseQuantity}
                                                             addToCart={addToCart}
                                                             cartItems = {cartItems}/>} />
-        <Route path="/checkout" element={<CheckOutPage cartItems = {cartItems} />}/>
+
+        <Route path="/checkout" element={<CheckOutPage cartItems = {cartItems} 
+                                                       removeFromCart = {removeFromCart}
+                                                       clearCart = {clearCart}/>}/>
         {/* <Route path="/CustomerService" element={<CustomerService />} /> */}
       </Routes>
       <Footer />

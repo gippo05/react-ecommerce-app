@@ -1,16 +1,28 @@
-import { Products } from '../mockdata/data.js';
+import Product from "../models/productSchema.js";
 
-
-export const getProducts = (req, res) =>{
-    res.json(Products)
+//fetches products from the mockdata
+export const getProducts = async (req, res) =>{
+    try{
+        const products = await Product.find({});
+        res.json(products);
+    } catch(error){
+        res.status(500).json({message: 'Failed to fetch products'})
+    }
 }
 
-export const getProductById = (req, res) =>{
-    const product = Products.find(p => p.id === parseInt(req.params.id));
+
+//does the same, only fetches a single product through its ID
+export const getProductById = async (req, res) =>{
+   try{
+    const product = await Product.findById(req.params.id);
     if(product){
         res.json(product);
-    } 
-    else {
-        res.status(404).json({message: "Product not found."});
     }
+    else{
+        res.status(404).json({message: 'Product not found.'});
+    }
+   }
+   catch(error){
+        res.status(500).json({ message: "Error fetching product." });
+   }
 };
