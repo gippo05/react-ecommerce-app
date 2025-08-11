@@ -1,7 +1,5 @@
-import { useParams } from "react-router-dom";
-import { Products } from "../mockdata/data";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const ProductDetails = ({ addToCart, cartItems }) => {
   const { id } = useParams();
@@ -12,21 +10,37 @@ const ProductDetails = ({ addToCart, cartItems }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setLoading(true);
-    // Simulate fetching from API:
-    const timer = setTimeout(() => {
-      const foundProduct = Products.find((p) => p.id === Number(id));
-      setProduct(foundProduct);
-      setLoading(false);
-    }, 1000); // 1 second fake delay
+    const fetchProduct = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(`http://localhost:3000/api/products/${id}`);
+        if (!res.ok) {
+          throw new Error("Product not found");
+        }
+        const data = await res.json();
+        setProduct(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    return () => clearTimeout(timer);
+    fetchProduct();
   }, [id]);
 
-  if (loading || !product) {
+  if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FFFDE7]">
         <div className="w-16 h-16 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
+  if (!product) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#FFFDE7]">
+        <p className="text-lg text-gray-600">Product not found</p>
       </div>
     );
   }
@@ -42,13 +56,11 @@ const ProductDetails = ({ addToCart, cartItems }) => {
   };
 
   const handleBuyNow = () => {
-
-    if(!isInCart()){
+    if (!isInCart()) {
       addToCart(product, quantity);
     }
     navigate("/checkout");
-    
-  }
+  };
 
   return (
     <div className="min-h-screen flex items-start justify-center px-4 py-10 bg-[#FFFDE7]">
@@ -56,7 +68,7 @@ const ProductDetails = ({ addToCart, cartItems }) => {
         {/* Left - Image section */}
         <div className="md:w-1/2 flex flex-col items-center">
           <img
-            src={product.image}
+            src={`http://localhost:3000${product.image}`}
             alt={product.name}
             className="w-full max-w-xs rounded-lg"
           />
@@ -77,7 +89,9 @@ const ProductDetails = ({ addToCart, cartItems }) => {
         {/* Right - Product info */}
         <div className="md:w-1/2">
           <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
-          <p className="text-red-600 text-2xl font-bold mb-1">₱{product.price}</p>
+          <p className="text-red-600 text-2xl font-bold mb-1">
+            ₱{product.price}
+          </p>
           <p className="line-through text-gray-400 text-sm mb-2">
             ₱{product.originalPrice}
           </p>
@@ -128,7 +142,10 @@ const ProductDetails = ({ addToCart, cartItems }) => {
               {isInCart() ? "Already in Cart" : "Add to Cart"}
             </button>
 
-            <button className="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 cursor-pointer" onClick={handleBuyNow}>
+            <button
+              className="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 cursor-pointer"
+              onClick={handleBuyNow}
+            >
               Buy Now
             </button>
           </div>

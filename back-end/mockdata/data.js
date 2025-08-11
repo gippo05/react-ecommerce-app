@@ -1,17 +1,3 @@
-import dog_food1 from '../assets/dog_food1.webp'
-import dog_food2 from '../assets/dog_food2.webp'
-import dog_food3 from '../assets/dog_food3.jpg'
-import cat_food1 from '../assets/cat_food1.jpg'
-import cat_food2 from '../assets/cat_food2.webp'
-import cat_food3 from '../assets/cat_food3.webp'
-import pet_leash1 from '../assets/pet_leash1.webp'
-import pet_leash2 from '../assets/pet_leash2.webp'
-import pet_leash3 from '../assets/pet_leash3.webp'
-import pet_collar1 from '../assets/pet_collar1.webp'
-import pet_cage1 from '../assets/pet_cage1.jpg'
-import pet_collar3 from '../assets/pet_collar3.jpg'
-
-
 export const Products = [
 
     {
@@ -20,7 +6,7 @@ export const Products = [
     "price": 299,
     "rating": 4.9,
     "reviews": "1.2k",
-    "image": dog_food1,
+    "image": "/images/dog_food1.webp",
     "originalPrice": 499,
     
     },
@@ -30,7 +16,7 @@ export const Products = [
     "price": 599,
     "rating": 4.8,
     "reviews": "1.5k",
-    "image": dog_food2,
+    "image": '/images/dog_food2.webp',
     "originalPrice": 799,
     },
     {
@@ -39,7 +25,7 @@ export const Products = [
     "price": 399,
     "rating": 4.5,
     "reviews": "2.2k",
-    "image": dog_food3,
+    "image": '/images/dog_food3.jpg',
     "originalPrice": 699,
     },
     {
@@ -48,7 +34,7 @@ export const Products = [
     "price": 799,
     "rating": 4.9,
     "reviews": "1.5k",
-    "image": cat_food1,
+    "image": '/images/cat_food1.jpg',
     "originalPrice": 999,
     },
     {
@@ -57,7 +43,7 @@ export const Products = [
     "price": 499,
     "rating": 4.9,
     "reviews": "3.2k",
-    "image": cat_food2,
+    "image": '/images/cat_food2.webp',
     "originalPrice": 899,
     },
     {
@@ -66,7 +52,7 @@ export const Products = [
     "price": 299,
     "rating": 4.8,
     "reviews": "1.1k",
-    "image": cat_food3,
+    "image": '/images/cat_food3.webp',
     "originalPrice": 499,
     },
     {
@@ -75,7 +61,7 @@ export const Products = [
     "price": 250,
     "rating": 4.9,
     "reviews": "5.6k",
-    "image": pet_collar1,
+    "image": '/images/pet_collar1.webp',
     "originalPrice": 500,
     },
     {
@@ -84,7 +70,7 @@ export const Products = [
     "price": 299,
     "rating": 4.5,
     "reviews": 120,
-    "image": pet_collar3,
+    "image": '/images/pet_collar3.jpg',
     "originalPrice": 499,
     },
     {
@@ -93,7 +79,7 @@ export const Products = [
     "price": 699,
     "rating": 4.9,
     "reviews": "1.5k",
-    "image": pet_cage1,
+    "image": '/images/pet_cage1.jpg',
     "originalPrice": 1099,
     },
     {
@@ -102,7 +88,7 @@ export const Products = [
     "price": 299,
     "rating": 4.5,
     "reviews": "2.2k",
-    "image": pet_leash1,
+    "image": '/images/pet_leash1.webp',
 
     },
     {
@@ -111,7 +97,7 @@ export const Products = [
     "price": 299,
     "rating": 4.5,
     "reviews": "10.1k",
-    "image": pet_leash2,
+    "image": '/images/pet_leash2.webp',
     "originalPrice": 499,
     },
     {
@@ -120,7 +106,7 @@ export const Products = [
     "price": 299,
     "rating": 4.5,
     "reviews": "7.6k",
-    "image": pet_leash3,
+    "image": '/images/pet_leash3.webp',
     "originalPrice": 499,
     },
 ]
