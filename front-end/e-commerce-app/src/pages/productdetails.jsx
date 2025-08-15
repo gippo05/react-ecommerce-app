@@ -68,7 +68,7 @@ const ProductDetails = ({ addToCart, cartItems }) => {
         {/* Left - Image section */}
         <div className="md:w-1/2 flex flex-col items-center">
           <img
-            src={`http://localhost:3000${product.image}`}
+            src={`https://backend-gnpawsentials.onrender.com${product.image}`}
             alt={product.name}
             className="w-full max-w-xs rounded-lg"
           />

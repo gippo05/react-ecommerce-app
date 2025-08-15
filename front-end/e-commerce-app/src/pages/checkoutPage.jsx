@@ -37,7 +37,7 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
             >
               <div className="flex items-center gap-4">
                 <img
-                  src={`https://backend-gnpawsentials.onrender.com/images/${item.image}`}
+                  src={`https://backend-gnpawsentials.onrender.com${item.image}`}
                   alt={item.name}
                   className="w-20 h-20 object-cover rounded"
                 />
