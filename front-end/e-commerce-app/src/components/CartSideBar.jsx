@@ -31,7 +31,7 @@ const CartSideBar = ({
           <>
             {cartItems.map((item, index) => (
               <div key={index} className="mb-4 border-b pb-2">
-                <img src={`http://localhost:3000${item.image}`} alt={item.name} className="h-36" />
+                <img src={`https://backend-gnpawsentials.onrender.com/images/${item.image}`} alt={item.name} className="h-36" />
                 <h3 className="font-semibold">{item.name}</h3>
                 <p>₱{item.price}</p>
                 <p>Quantity: {item.quantity}</p>
