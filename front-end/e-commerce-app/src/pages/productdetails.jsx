@@ -13,7 +13,7 @@ const ProductDetails = ({ addToCart, cartItems }) => {
     const fetchProduct = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:3000/api/products/${id}`);
+        const res = await fetch(`https://backend-gnpawsentials.onrender.com/api/products/${id}`);
         if (!res.ok) {
           throw new Error("Product not found");
         }

@@ -10,7 +10,7 @@ const Home = ({ addToCart, searchedItems }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/products"); // Your backend endpoint
+        const res = await fetch("https://backend-gnpawsentials.onrender.com/api/products"); // Your backend endpoint
         const data = await res.json();
         setProducts(data);
       } catch (error) {
