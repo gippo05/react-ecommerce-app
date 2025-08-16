@@ -6,6 +6,7 @@ import ProductDetails from "./pages/productdetails";
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/footer";
 import CheckOutPage from "./pages/checkoutPage"
+import CustomerService from "./pages/customerService";
 
 
 
@@ -134,7 +135,9 @@ useEffect(() => {
         <Route path="/checkout" element={<CheckOutPage cartItems = {cartItems} 
                                                        removeFromCart = {removeFromCart}
                                                        clearCart = {clearCart}/>}/>
-        {/* <Route path="/CustomerService" element={<CustomerService />} /> */}
+                                                       
+        <Route path ="/customerService" element={<CustomerService />} />
+        
       </Routes>
       <Footer />
       {showCart && <CartSideBar cartItems={cartItems} 

@@ -8,7 +8,6 @@ const productSchema = mongoose.Schema({
   rating: Number,
   reviews: String,
   originalPrice: Number,
-  // add other fields as needed
 }, {
   timestamps: true,
 });

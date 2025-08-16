@@ -2,7 +2,7 @@ export const NavBarMenuItems = [
     {
         "id": 1,
         "title": "Customer Service",
-        "link": "#"
+        "link": "/customerService"
     },
      {
         "id": 2,

@@ -6,6 +6,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import logo from '../assets/LOGO/main_logo.png'
+import { Link } from "react-router-dom";
 
 const NavBar = ({cartCount, onCartClick, onSearchChange, searchValue}) => {
 
@@ -17,8 +18,12 @@ const NavBar = ({cartCount, onCartClick, onSearchChange, searchValue}) => {
     <nav className="bg-[#F97316] text-[#FFF8E1]">
       <div className="flex items-center justify-between px-6 py-4">
         {/* Logo */}
-        <div className="ml-5"><img src={logo} alt="G&NLogo" className="h-20 w-full" /></div>
-
+        
+        <div className="ml-5">
+          <Link to={"/"}>
+          <img src={logo} alt="G&NLogo" className="h-20 w-full" />
+        </Link>
+        </div>
         {/* Search Bar (hidden on small screens) */}
         <div className="hidden sm:flex relative items-center">
           <input
