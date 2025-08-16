@@ -1,6 +1,17 @@
 import { Link } from "react-router-dom";
 
+
+
+
+
+
+
 const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
+
+
+
+  
+
   return (
     <>
     <div className="min-h-screen bg-gray-100 p-8">
@@ -24,6 +35,36 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
               placeholder="Enter your address"
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
             />
+          </div>
+
+          <div>
+            <label className="block mb-2 text-sm font-medium text-gray-700">Payment Method</label>
+            
+            <div className="flex items-center space-x-2">
+              <input
+                type="radio"
+                name="payment"
+                id="COD"
+                className="h-4 w-4 text-amber-600 focus:ring-amber-500"
+              />
+              <label htmlFor="COD" className="text-gray-700">Cash on Delivery</label>
+
+              <input
+                type="radio"
+                name="payment"
+                id="COD"
+                className="h-4 w-4 text-amber-600 focus:ring-amber-500"
+              />
+              <label htmlFor="COD" className="text-gray-700">GCash</label>
+              
+              <input
+                type="radio"
+                name="payment"
+                id="COD"
+                className="h-4 w-4 text-amber-600 focus:ring-amber-500"
+              />
+              <label htmlFor="COD" className="text-gray-700">Credit/Debit Card</label>
+            </div>
           </div>
         </form>
 
@@ -57,18 +98,27 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
           ))}
         </div>
 
-        <div className="mt-8 flex flex-col md:flex-row gap-4">
-              <button className="px-6 py-3 bg-orange-300 hover:bg-orange-200 text-white font-semibold rounded-md transition cursor-pointer">
-                Confirm Order
-              </button>
+       <div className="mt-8 flex flex-col md:flex-row items-center gap-4">
+  
+  <h3 className="font-extrabold text-2xl text-gray-800 pl-5">
+    Total: {0}
+  </h3>
 
-              <button
-                onClick={clearCart}
-                className="px-6 py-3 bg-red-400 hover:bg-red-300 text-white font-semibold rounded-md transition cursor-pointer"
-              >
-                Clear Cart
-              </button>
-          </div>
+  
+  <div className="ml-auto flex gap-4">
+    <button className="px-6 py-3 bg-orange-300 hover:bg-orange-200 text-white font-semibold rounded-md transition cursor-pointer">
+      Confirm Order
+    </button>
+
+    <button
+      onClick={clearCart}
+      className="px-6 py-3 bg-red-400 hover:bg-red-300 text-white font-semibold rounded-md transition cursor-pointer"
+    >
+      Clear Cart
+    </button>
+  </div>
+</div>
+
 
         
          
