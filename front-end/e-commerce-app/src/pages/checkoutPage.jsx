@@ -10,7 +10,11 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
 
 
 
-  
+  const total = cartItems.reduce(
+  (accumulator, item) => accumulator + item.price * item.quantity,
+  0
+);
+
 
   return (
     <>
@@ -101,7 +105,7 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
        <div className="mt-8 flex flex-col md:flex-row items-center gap-4">
   
   <h3 className="font-extrabold text-2xl text-gray-800 pl-5">
-    Total: {0}
+    Total: ₱{total}
   </h3>
 
   
