@@ -6,7 +6,6 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import productRouter from './routes/productRoutes.js';
 import path from 'path';
-import productRouter from './routes/productRoutes.js';
 import createOrderRouter from './routes/orderRoutes.js';
 
 const app = express();
