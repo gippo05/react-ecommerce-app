@@ -23,7 +23,7 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
 );
 
   const handlePlaceOrder = async () =>{
-    if(!cartItems){
+    if(cartItems.length === 0){
       alert("Cart is empty! Cannot palce order!");
       return 
     }
