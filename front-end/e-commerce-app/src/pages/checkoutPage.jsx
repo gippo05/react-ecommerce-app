@@ -17,10 +17,6 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
   const [customerAddress, setAddress] = useState("");
   const [customerEmailAddress, setEmailAddress] = useState("");
 
-  const totalPrice = cartItems.reduce(
-  (accumulator, item) => accumulator + item.price * item.quantity,
-  0
-);
 
   const handlePlaceOrder = async () => {
   // 1️⃣ Check if cart is empty
