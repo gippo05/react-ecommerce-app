@@ -19,9 +19,12 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
 
    // 4️⃣ Calculate total price
   const totalPrice = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc, item) => acc + Number(item.price) * Number(item.quantity),
     0
   );
+
+  console.log("Total price: ", totalPrice);
+  console.log(typeof totalPrice)
 
 
   const handlePlaceOrder = async () => {
@@ -37,19 +40,31 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
     return;
   }
 
-  // 3️⃣ Validate cart items for required fields
-  for (let i = 0; i < cartItems.length; i++) {
-    const item = cartItems[i];
+  // 3️⃣ Validate cart items for required fields and log them
+  cartItems.forEach((item, index) => {
+    console.log(`Item ${index}:`, item);
+
     if (!item._id && !item.id) {
       alert(`Item "${item.name}" is missing a valid product ID.`);
-      return;
+      throw new Error(`Item "${item.name}" missing product ID`);
     }
+
     if (!item.image) {
       alert(`Item "${item.name}" is missing an image.`);
-      return;
+      throw new Error(`Item "${item.name}" missing image`);
     }
-  }
+  });
 
+  // 4️⃣ Safely calculate total price
+  // const totalPrice = cartItems.reduce(
+  //   (acc, item) => acc + (item.price || 0) * (item.quantity || 1),
+  //   0
+  // );
+
+  console.log("Calculated totalPrice:", totalPrice, typeof totalPrice);
+  cartItems.forEach((item, idx) => {
+  console.log(`Item ${idx} image:`, item.image);
+});
 
   // 5️⃣ Build payload
   const payload = {
@@ -61,17 +76,28 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
     total: totalPrice,
     paymentMethod: selectedPaymentMethod,
     items: cartItems.map(item => ({
+      name: item.name,
+      price: item.price,
       productId: item._id || item.id,
-      quantity: item.quantity,
-      image: item.image
+      quantity: item.quantity || 1,
+      image: item.image.startsWith('http')
+          ? item.image
+          : `https://backend-gnpawsentials.onrender.com${item.image}`
     }))
   };
+
+  console.log("Final payload to send:", payload);
 
   // 6️⃣ Send request to backend
   try {
     const response = await axios.post(
       "https://backend-gnpawsentials.onrender.com/api/orders",
-      payload
+      payload,
+      {
+        headers: {
+      "Content-Type": "application/json"
+    }
+      }
     );
 
     console.log("Order created: ", response.data);

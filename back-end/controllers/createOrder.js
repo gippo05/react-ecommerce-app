@@ -37,7 +37,8 @@ export const createOrder = async (req, res) =>{
             productId: item.productId,
             name: matchingProduct.name,
             price: matchingProduct.price,
-            quantity: item.quantity
+            quantity: item.quantity,
+            image: matchingProduct.image
         })
     }
 
@@ -60,7 +61,7 @@ export const createOrder = async (req, res) =>{
     },
     paymentMethod,
     items: orderItems,
-    totalPrice
+    total
   })
   await newOrder.save();
   res.status(201).json(newOrder);
