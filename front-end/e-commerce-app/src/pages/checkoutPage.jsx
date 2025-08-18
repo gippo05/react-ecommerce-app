@@ -17,6 +17,12 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
   const [customerAddress, setAddress] = useState("");
   const [customerEmailAddress, setEmailAddress] = useState("");
 
+   // 4️⃣ Calculate total price
+  const totalPrice = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+
 
   const handlePlaceOrder = async () => {
   // 1️⃣ Check if cart is empty
@@ -44,11 +50,6 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
     }
   }
 
-  // 4️⃣ Calculate total price
-  const totalPrice = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
 
   // 5️⃣ Build payload
   const payload = {
