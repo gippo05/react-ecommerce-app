@@ -145,7 +145,7 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
                 onChange={(e) => setPaymentMethod(e.target.value)}
                 className="h-4 w-4 text-amber-600 focus:ring-amber-500"
               />
-              <label htmlFor="COD" className="text-gray-700">GCash</label>
+              <label htmlFor="GCash" className="text-gray-700">GCash</label>
               
               <input
                 type="radio"
@@ -155,7 +155,7 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
                 onChange={(e) => setPaymentMethod(e.target.value)}
                 className="h-4 w-4 text-amber-600 focus:ring-amber-500"
               />
-              <label htmlFor="COD" className="text-gray-700">Credit/Debit Card</label>
+              <label htmlFor="Card" className="text-gray-700">Credit/Debit Card</label>
             </div>
           </div>
         </form>
