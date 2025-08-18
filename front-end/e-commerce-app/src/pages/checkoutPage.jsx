@@ -22,33 +22,56 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
   0
 );
 
-  const handlePlaceOrder = async () =>{
-    if(cartItems.length === 0){
-      alert("Cart is empty! Cannot palce order!");
-      return 
-    }
-    if(!customerName || !selectedPaymentMethod || !customerAddress || !customerEmailAddress){
-      alert("Please complete or required fields!")
-      return
-    }
+  const handlePlaceOrder = async () => {
+  // 1️⃣ Check if cart is empty
+  if (cartItems.length === 0) {
+    alert("Cart is empty! Cannot place order!");
+    return;
+  }
 
-    //Build Payload
-    try {
-    const payload = {
-      customer: {
-        name: customerName,
-        email: customerEmailAddress,
-        address: customerAddress,
-      },
-      total: totalPrice,
-      paymentMethod: selectedPaymentMethod,
-      items: cartItems.map(item => ({
-        productId: item._id || item.id,   // make sure this is MongoDB _id
-        quantity: item.quantity,
-        image: item.image
-      }))
-    };
+  // 2️⃣ Check required customer fields
+  if (!customerName || !selectedPaymentMethod || !customerAddress || !customerEmailAddress) {
+    alert("Please complete all required fields!");
+    return;
+  }
 
+  // 3️⃣ Validate cart items for required fields
+  for (let i = 0; i < cartItems.length; i++) {
+    const item = cartItems[i];
+    if (!item._id && !item.id) {
+      alert(`Item "${item.name}" is missing a valid product ID.`);
+      return;
+    }
+    if (!item.image) {
+      alert(`Item "${item.name}" is missing an image.`);
+      return;
+    }
+  }
+
+  // 4️⃣ Calculate total price
+  const totalPrice = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+
+  // 5️⃣ Build payload
+  const payload = {
+    customer: {
+      name: customerName,
+      email: customerEmailAddress,
+      address: customerAddress,
+    },
+    total: totalPrice,
+    paymentMethod: selectedPaymentMethod,
+    items: cartItems.map(item => ({
+      productId: item._id || item.id,
+      quantity: item.quantity,
+      image: item.image
+    }))
+  };
+
+  // 6️⃣ Send request to backend
+  try {
     const response = await axios.post(
       "https://backend-gnpawsentials.onrender.com/api/orders",
       payload
@@ -57,13 +80,10 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
     console.log("Order created: ", response.data);
     clearCart();
     alert("Order successfully placed!");
-    navigate("/");
-    navigate
+    navigate("/"); // redirect to home
   } catch (error) {
-    console.error(
-      "Checkout failed:",
-      error.response?.data || error.message
-    );
+    console.error("Checkout failed:", error.response?.data || error.message);
+    alert("Checkout failed. Please check your cart and try again.");
   }
 };
 
