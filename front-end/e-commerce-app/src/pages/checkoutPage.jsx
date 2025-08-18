@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-
+import { use, useState} from "react";
+import { useNavigate } from "react-router-dom";
+import axios from 'axios'
 
 
 
@@ -7,8 +9,56 @@ import { Link } from "react-router-dom";
 
 
 const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
+  
+  const navigate = useNavigate();
 
+  const [customerName, setName] = useState("");
+  const [selectedPaymentMethod, setPaymentMethod] = useState("");
+  const [customerAddress, setAddress] = useState("");
+  const [customerEmailAddress, setEmailAddress] = useState("");
 
+  const handlePlaceOrder = async () =>{
+    if(!cartItems){
+      alert("Cart is empty! Cannot palce order!");
+      return 
+    }
+    if(!customerName || !selectedPaymentMethod || !customerAddress || !customerEmailAddress){
+      alert("Please complete or required fields!")
+      return
+    }
+
+    //Build Payload
+    try {
+    const payload = {
+      customer: {
+        name: customerName,
+        email: customerEmailAddress,
+        address: customerAddress,
+      },
+      paymentMethod: selectedPaymentMethod,
+      items: cartItems.map(item => ({
+        productId: item.id,   // make sure this is MongoDB _id
+        quantity: item.quantity
+      }))
+    };
+
+    const response = await axios.post(
+      "https://backend-gnpawsentials.onrender.com/api/orders",
+      payload
+    );
+
+    console.log("Order created: ", response.data);
+    clearCart();
+    alert("Order successfully placed!");
+    navigate("/");
+    navigate
+  } catch (error) {
+    console.error(
+      "Checkout failed:",
+      error.response?.data || error.message
+    );
+  }
+};
 
   const total = cartItems.reduce(
   (accumulator, item) => accumulator + item.price * item.quantity,
@@ -28,6 +78,7 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
             <input
               type="text"
               placeholder="Enter your name"
+              onChange={(e) => setName(e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
             />
           </div>
@@ -37,6 +88,17 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
             <input
               type="text"
               placeholder="Enter your address"
+              onChange={(e) => setAddress(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            />
+          </div>
+
+           <div>
+            <label className="block mb-2 text-sm font-medium text-gray-700">Email Address</label>
+            <input
+              type="text"
+              placeholder="Enter your email address"
+              onChange={(e) => setEmailAddress(e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
             />
           </div>
@@ -49,6 +111,8 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
                 type="radio"
                 name="payment"
                 id="COD"
+                value="COD"
+                onChange={(e) => setPaymentMethod(e.target.value)}
                 className="h-4 w-4 text-amber-600 focus:ring-amber-500"
               />
               <label htmlFor="COD" className="text-gray-700">Cash on Delivery</label>
@@ -56,7 +120,9 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
               <input
                 type="radio"
                 name="payment"
-                id="COD"
+                id="GCash"
+                value="GCash"
+                onChange={(e) => setPaymentMethod(e.target.value)}
                 className="h-4 w-4 text-amber-600 focus:ring-amber-500"
               />
               <label htmlFor="COD" className="text-gray-700">GCash</label>
@@ -64,7 +130,9 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
               <input
                 type="radio"
                 name="payment"
-                id="COD"
+                id="Card"
+                value="Card"
+                onChange={(e) => setPaymentMethod(e.target.value)}
                 className="h-4 w-4 text-amber-600 focus:ring-amber-500"
               />
               <label htmlFor="COD" className="text-gray-700">Credit/Debit Card</label>
@@ -110,7 +178,9 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
 
   
   <div className="ml-auto flex gap-4">
-    <button className="px-6 py-3 bg-orange-300 hover:bg-orange-200 text-white font-semibold rounded-md transition cursor-pointer">
+    <button 
+      onClick={handlePlaceOrder}
+      className="px-6 py-3 bg-orange-300 hover:bg-orange-200 text-white font-semibold rounded-md transition cursor-pointer">
       Confirm Order
     </button>
 

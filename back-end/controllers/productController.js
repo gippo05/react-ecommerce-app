@@ -1,6 +1,6 @@
 import Product from "../models/productSchema.js";
 
-//fetches products from the mockdata
+//fetches products from the database
 export const getProducts = async (req, res) =>{
     try{
         const products = await Product.find({});

@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
 import ProductCard from "../components/productcard";
 import ImageSlider from "../components/ImageSlider";
+import axios from 'axios';
 
 const Home = ({ addToCart, searchedItems }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   
-  useEffect(() => {
+   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch("https://backend-gnpawsentials.onrender.com/api/products"); // Your backend endpoint
-        const data = await res.json();
-        setProducts(data);
+        const res = await axios.get(
+          "https://backend-gnpawsentials.onrender.com/api/products"
+        ); 
+        setProducts(res.data); // axios already parses JSON
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {

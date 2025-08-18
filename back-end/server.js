@@ -6,6 +6,8 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import router from './routes/productRoutes.js';
 import path from 'path';
+import productRouter from './routes/productRoutes.js';
+import createOrderRouter from './routes/orderRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -24,7 +26,8 @@ app.use('/images', express.static(path.join(__dirname, '/public/images')));
 
 
 // Routes
-app.use('/api/products', router);
+app.use('/api/products', productRouter);
+app.use('/api/orders', createOrderRouter);
 
 app.get('/', (req, res) => {
   res.send('API is running...');
