@@ -4,7 +4,7 @@ dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import router from './routes/productRoutes.js';
+import productRouter from './routes/productRoutes.js';
 import path from 'path';
 import productRouter from './routes/productRoutes.js';
 import createOrderRouter from './routes/orderRoutes.js';

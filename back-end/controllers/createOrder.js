@@ -1,5 +1,5 @@
-import Order from '../models/orderSchema';
-import Product from '../models/productSchema';
+import Order from '../models/orderSchema.js';
+import Product from '../models/productSchema.js';
 
 
 export const createOrder = async (req, res) =>{

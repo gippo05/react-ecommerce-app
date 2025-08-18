@@ -4,6 +4,6 @@ import { createOrder } from '../controllers/createOrder.js';
 
 // import function from ordercontroller
 
-router.post("/", createOrder);
+createOrderRouter.post("/", createOrder);
 
 export default createOrderRouter;
