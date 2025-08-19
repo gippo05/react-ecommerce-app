@@ -9,7 +9,6 @@ import CheckOutPage from "./pages/checkoutPage"
 import CustomerService from "./pages/customerService";
 
 
-
 function App() {
 
 // Search filtering functionality
@@ -137,6 +136,7 @@ useEffect(() => {
                                                        clearCart = {clearCart}/>}/>
                                                        
         <Route path ="/customerService" element={<CustomerService />} />
+        
         
       </Routes>
       <Footer />
