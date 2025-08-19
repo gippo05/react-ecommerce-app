@@ -55,12 +55,6 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
     }
   });
 
-  // 4️⃣ Safely calculate total price
-  // const totalPrice = cartItems.reduce(
-  //   (acc, item) => acc + (item.price || 0) * (item.quantity || 1),
-  //   0
-  // );
-
   console.log("Calculated totalPrice:", totalPrice, typeof totalPrice);
   cartItems.forEach((item, idx) => {
   console.log(`Item ${idx} image:`, item.image);
@@ -91,7 +85,7 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
   // 6️⃣ Send request to backend
   try {
     const response = await axios.post(
-      "https://backend-gnpawsentials.onrender.com/api/orders",
+      "https://backend-gnpawsentials.onrender.com/api/submitorder",
       payload,
       {
         headers: {
