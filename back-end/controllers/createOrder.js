@@ -61,7 +61,7 @@ export const createOrder = async (req, res) =>{
     },
     paymentMethod,
     items: orderItems,
-    total
+    total: totalPrice
   })
   await newOrder.save();
   res.status(201).json(newOrder);
