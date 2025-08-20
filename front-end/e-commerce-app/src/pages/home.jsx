@@ -14,7 +14,7 @@ const Home = ({ addToCart, searchedItems }) => {
         const res = await axios.get(
           "https://backend-gnpawsentials.onrender.com/api/products"
         ); 
-        setProducts(res.data); // axios already parses JSON
+        setProducts(res.data); 
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
