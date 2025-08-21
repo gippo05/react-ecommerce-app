@@ -8,6 +8,8 @@ import productRouter from './routes/productRoutes.js';
 import path from 'path';
 import createOrderRouter from './routes/orderRoutes.js';
 import fetchOrderRouter from './routes/viewOrderRoutes.js';
+import dashboardTotalOrderView from './routes/dashboardTotalOrdersRoute.js';
+import dashboardRevenueView from './routes/dashboardRevenueViewRoute.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -25,11 +27,17 @@ const __dirname = path.resolve();
 app.use('/images', express.static(path.join(__dirname, '/public/images')));
 
 
-// Routes
+// Front-end Routes
 app.use('/api/products', productRouter);
 app.use('/api/submitorder', createOrderRouter);
-app.use('/api/orders', fetchOrderRouter);
 
+
+//Admin Dashboard routes
+app.use('/api/orders', fetchOrderRouter);
+app.use('/api/dashboard/total-orders', dashboardTotalOrderView);
+app.use('/api/dashboard/total-sales', dashboardRevenueView);
+
+// default get
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
