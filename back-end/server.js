@@ -10,6 +10,7 @@ import createOrderRouter from './routes/orderRoutes.js';
 import fetchOrderRouter from './routes/viewOrderRoutes.js';
 import dashboardTotalOrderView from './routes/dashboardTotalOrdersRoute.js';
 import dashboardRevenueView from './routes/dashboardRevenueViewRoute.js';
+import { getProductsAdmin } from './controllers/productController.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -36,6 +37,7 @@ app.use('/api/submitorder', createOrderRouter);
 app.use('/api/orders', fetchOrderRouter);
 app.use('/api/dashboard/total-orders', dashboardTotalOrderView);
 app.use('/api/dashboard/total-sales', dashboardRevenueView);
+app.use('/api/dashboard/products', getProductsAdmin);
 
 // default get
 app.get('/', (req, res) => {
