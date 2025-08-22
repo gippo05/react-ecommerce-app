@@ -8,9 +8,9 @@ import productRouter from './routes/productRoutes.js';
 import path from 'path';
 import createOrderRouter from './routes/orderRoutes.js';
 import fetchOrderRouter from './routes/viewOrderRoutes.js';
-import dashboardTotalOrderView from './routes/dashboardTotalOrdersRoute.js';
-import dashboardRevenueView from './routes/dashboardRevenueViewRoute.js';
+import adminDashboard from './routes/adminDashboardRoutes.js';
 import { getProductsAdmin } from './controllers/productController.js';
+import adminAccess from './routes/adminAcess.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -33,10 +33,13 @@ app.use('/api/products', productRouter);
 app.use('/api/submitorder', createOrderRouter);
 
 
+//admin registration route
+app.use('/api/admin/', adminAccess)
+
 //Admin Dashboard routes
 app.use('/api/orders', fetchOrderRouter);
-app.use('/api/dashboard/total-orders', dashboardTotalOrderView);
-app.use('/api/dashboard/total-sales', dashboardRevenueView);
+app.use('/api/dashboard/', adminDashboard);
+app.use('/api/dashboard/total-sales', adminDashboard);
 app.use('/api/dashboard/products', getProductsAdmin);
 
 // default get
