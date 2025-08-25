@@ -5,6 +5,17 @@ export const getProducts = async (req, res) =>{
     try{
         const products = await Product.find({});
         res.json(products);
+
+         let query = {};
+                if (search) {
+                query = {
+                    $or: [
+                    { customerName: { $regex: search, $options: "i" } }, //matches cx name
+                    { orderId: { $regex: search, $options: "i" } },     // matches cx order ID
+                    { "items.productName": { $regex: search, $options: "i" } }, //matches item searched 
+                    ],
+                };
+                }
     } catch(error){
         res.status(500).json({message: 'Failed to fetch products'})
     }

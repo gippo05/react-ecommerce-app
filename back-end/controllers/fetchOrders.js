@@ -8,16 +8,19 @@ export const getOrders = async (req, res) =>{
         const skip = (page - 1) * limit;
 
 
-            let query = {};
+           let query = {};
                 if (search) {
                 query = {
                     $or: [
-                    { customerName: { $regex: search, $options: "i" } }, //matches cx name
-                    { orderId: { $regex: search, $options: "i" } },     // matches cx order ID
-                    { "items.productName": { $regex: search, $options: "i" } }, //matches item searched 
+                    { "customer.name": { $regex: search, $options: "i" } },   // customer name
+                    { "customer.email": { $regex: search, $options: "i" } },  // customer email
+                    { "customer.address": { $regex: search, $options: "i" } },// customer address
+                    { paymentMethod: { $regex: search, $options: "i" } },     // payment method
+                    { "items.name": { $regex: search, $options: "i" } },      // product name in items
                     ],
                 };
                 }
+
 
 
         const orders = await Order.find().skip(skip).limit(limit);
