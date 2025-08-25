@@ -7,6 +7,19 @@ export const getOrders = async (req, res) =>{
         const limit = parseInt(req.query.limit) || 5;
         const skip = (page - 1) * limit;
 
+
+            let query = {};
+                if (search) {
+                query = {
+                    $or: [
+                    { customerName: { $regex: search, $options: "i" } }, //matches cx name
+                    { orderId: { $regex: search, $options: "i" } },     // matches cx order ID
+                    { "items.productName": { $regex: search, $options: "i" } }, //matches item searched 
+                    ],
+                };
+                }
+
+
         const orders = await Order.find().skip(skip).limit(limit);
         const total = await Order.countDocuments();
 
