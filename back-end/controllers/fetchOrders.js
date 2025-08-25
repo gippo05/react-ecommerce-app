@@ -33,6 +33,7 @@ export const getOrders = async (req, res) =>{
             totalPages: Math.ceil(total / limit),
         });
     } catch (error){
+        console.error("Error fetching orders:", error.message);
         res.status(500).json({ message: "Server Error: "});
     }
 }
