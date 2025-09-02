@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { use, useState} from "react";
+import { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 
@@ -96,8 +96,18 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
 
     console.log("Order created: ", response.data);
     clearCart();
-    alert("Order successfully placed!");
-    navigate("/"); // redirect to home
+    
+    const {_id} = response.data;
+
+    if (selectedPaymentMethod === "COD"){
+      navigate(`/pending/${_id}`);
+    } else if(selectedPaymentMethod === "GCash"){
+      navigate(`/gcash-portal/${_id}`);
+    } else if(selectedPaymentMethod === "Credit/Debit Card"){
+      NavigationType(`/card-portal/${_id}`);
+    } else { 
+      navigate("/");
+    }
   } catch (error) {
     console.error("Checkout failed:", error.response?.data || error.message);
     alert("Checkout failed. Please check your cart and try again.");
@@ -219,17 +229,19 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
 
   
   <div className="ml-auto flex gap-4">
-    <button 
-      onClick={handlePlaceOrder}
-      className="px-6 py-3 bg-orange-300 hover:bg-orange-200 text-white font-semibold rounded-md transition cursor-pointer">
-      Confirm Order
-    </button>
+    
 
     <button
       onClick={clearCart}
       className="px-6 py-3 bg-red-400 hover:bg-red-300 text-white font-semibold rounded-md transition cursor-pointer"
     >
       Clear Cart
+    </button>
+
+    <button 
+      onClick={handlePlaceOrder}
+      className="px-6 py-3 bg-orange-300 hover:bg-orange-200 text-white font-semibold rounded-md transition cursor-pointer">
+      Confirm Order
     </button>
   </div>
 </div>

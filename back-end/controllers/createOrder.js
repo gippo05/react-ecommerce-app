@@ -53,6 +53,13 @@ export const createOrder = async (req, res) =>{
   return res.status(400).json({ message: "Customer details are required." });
 }
 
+  let orderStatus = "pending";
+    if (paymentMethod === "Stripe" || paymentMethod === "GCash") {
+      orderStatus = "pending"; // will be updated via webhook later
+    } else if (paymentMethod === "COD") {
+      orderStatus = "pending"; // waiting for delivery
+    }
+
   const newOrder = new Order({
     customer:{
         name: customer.name,
@@ -61,7 +68,8 @@ export const createOrder = async (req, res) =>{
     },
     paymentMethod,
     items: orderItems,
-    total: totalPrice
+    total: totalPrice,
+    status: orderStatus,
   })
   await newOrder.save();
   res.status(201).json(newOrder);

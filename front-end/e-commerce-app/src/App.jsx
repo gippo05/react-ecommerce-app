@@ -7,6 +7,9 @@ import { Routes, Route } from "react-router-dom";
 import Footer from "./components/footer";
 import CheckOutPage from "./pages/checkoutPage"
 import CustomerService from "./pages/customerService";
+import SuccessCheckout from "./pages/successCheckout";
+import FailedCheckout from "./pages/failedCheckout";
+import CodCheckout from "./pages/CODCheckout";
 
 
 function App() {
@@ -136,7 +139,9 @@ useEffect(() => {
                                                        clearCart = {clearCart}/>}/>
                                                        
         <Route path ="/customerService" element={<CustomerService />} />
-        
+        <Route path ="/success" element={<SuccessCheckout />} />
+        <Route path ="/failed" element={<FailedCheckout />} />
+        <Route path ="/pending/:orderId" element={<CodCheckout cartItems={cartItems}/>} />
         
       </Routes>
       <Footer />
