@@ -103,8 +103,8 @@ const CheckOutPage = ({ cartItems, removeFromCart, clearCart }) => {
       navigate(`/pending/${_id}`);
     } else if(selectedPaymentMethod === "GCash"){
       navigate(`/gcash-portal/${_id}`);
-    } else if(selectedPaymentMethod === "Credit/Debit Card"){
-      NavigationType(`/card-portal/${_id}`);
+    } else if(selectedPaymentMethod === "Card"){
+     window.location.href = response.data.url;
     } else { 
       navigate("/");
     }

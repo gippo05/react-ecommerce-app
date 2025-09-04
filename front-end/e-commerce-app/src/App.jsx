@@ -143,6 +143,8 @@ useEffect(() => {
         <Route path ="/failed" element={<FailedCheckout />} />
         <Route path ="/pending/:orderId" element={<CodCheckout cartItems={cartItems}/>} />
         
+
+        
       </Routes>
       <Footer />
       {showCart && <CartSideBar cartItems={cartItems} 
