@@ -8,7 +8,7 @@ const SuccessCheckout = () => {
   const { orderId } = useParams();
   const navigate = useNavigate();
 
-  const [order, setOrder] = useState();
+  const [order, setOrder] = useState(null);
   
 
 
@@ -49,7 +49,7 @@ const SuccessCheckout = () => {
         <h2 className="text-lg font-semibold mb-3">Order details: </h2>
 
         <ul className="text-left space-y-2">
-          {order.items.map((item) => (
+          {order?.items?.map((item) => (
             <li key={item.productId}>
                 {item.name} x {item.quantity} = ₱{item.price * item.quantity}
             </li>
