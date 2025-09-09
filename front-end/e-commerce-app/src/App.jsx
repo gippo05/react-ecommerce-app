@@ -139,7 +139,7 @@ useEffect(() => {
                                                        clearCart = {clearCart}/>}/>
                                                        
         <Route path ="/customerService" element={<CustomerService />} />
-        <Route path ="/success:orderId" element={<SuccessCheckout />} />
+        <Route path ="/success/:orderId" element={<SuccessCheckout />} />
         <Route path ="/failed" element={<FailedCheckout />} />
         <Route path ="/pending/:orderId" element={<CodCheckout cartItems={cartItems}/>} />
         
