@@ -48,7 +48,7 @@ const SuccessCheckout = () => {
 
         <h2 className="text-lg font-semibold mb-3">Order details: </h2>
 
-        <ul className="text-left space-y-2">
+        <ul className="text-center space-y-2 mb-2">
           {order?.items?.map((item) => (
             <li key={item.productId}>
                 {item.name} x {item.quantity} = ₱{item.price * item.quantity}
